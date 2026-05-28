@@ -8,6 +8,17 @@ export interface AppUpdate {
 
 export const APP_UPDATES: AppUpdate[] = [
   {
+    version: "0.7.5",
+    title: "Icon Polish",
+    description: "App and docs icons stay consistent.",
+    category: "fix",
+    details: [
+      "Use local sign assets for app chrome and favicon",
+      "Keep README logos readable across GitHub themes",
+      "Keep the Gemini key server-only"
+    ]
+  },
+  {
     version: "0.7.4",
     title: "Check Logs",
     description: "Check run logs stay steady while refreshing.",

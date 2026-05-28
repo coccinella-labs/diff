@@ -1,7 +1,7 @@
 {
   "name": "diff",
   "private": true,
-  "version": "0.7.4",
+  "version": "0.7.5",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "scripts": {
@@ -10,7 +10,8 @@
     "build": "vite build",
     "check:app": "node --import tsx ./scripts/check-app.ts",
     "check:e2e": "node --import tsx ./scripts/check-e2e.ts",
-    "release": "npm version patch && git push --follow-tags",
+    "bump:release": "node --import tsx ./scripts/bump-release.ts",
+    "release": "npm run lint && npm run build && git push --follow-tags",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",

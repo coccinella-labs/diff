@@ -87,6 +87,7 @@ import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-yaml";
 import { cn } from "./lib/utils";
+import diffLogoUrl from "../assets/diff-sign-light.png";
 import {
   fetchUserPreferences,
   isSupabaseConfigured,
@@ -403,8 +404,7 @@ const LOCAL_STORAGE_DEFAULT_REPO_KEY = "diff_default_repo";
 const LOCAL_STORAGE_THEME_KEY = "diff_theme";
 const LOCAL_STORAGE_GITHUB_PROVIDER_TOKEN_KEY = "diff_github_provider_token";
 const LOCAL_STORAGE_POLICY_ACKNOWLEDGED_KEY = "diff_policy_acknowledged";
-const COCCINELLA_LOGO_URL =
-  "https://raw.githubusercontent.com/Coccinella-Labs/Coccinella-Labs.github.io/main/999KB.png";
+const DIFF_LOGO_URL = diffLogoUrl;
 const SYSTEM_DEFAULT_REPO = { owner: SYSTEM_OWNER, repo: SYSTEM_REPO };
 const readStoredDefaultRepo = () => {
   const saved = localStorage.getItem(LOCAL_STORAGE_DEFAULT_REPO_KEY);
@@ -4673,9 +4673,9 @@ export default function App() {
             </button>
             <div className="group/brand flex min-w-0 items-center gap-2 lg:gap-3">
               <img
-                src={COCCINELLA_LOGO_URL}
+                src={DIFF_LOGO_URL}
                 alt=""
-                className="h-4 w-4 shrink-0 rounded-sm object-contain opacity-60 transition-transform duration-300 ease-out group-hover/brand:-translate-y-px group-hover/brand:scale-[1.03]"
+                className="h-4 w-4 shrink-0 rounded-sm object-contain opacity-40 transition-all duration-300 ease-out group-hover/brand:-translate-y-px group-hover/brand:scale-[1.03] group-hover/brand:opacity-55"
               />
               <div className="flex flex-col min-w-0">
                 <h1 className="text-base lg:text-xl font-mono tracking-tighter leading-none group cursor-default flex items-baseline">
@@ -7440,9 +7440,9 @@ export default function App() {
               <div className="border-b border-white/[0.04] px-5 py-3.5 sm:px-5">
                 <div className="flex items-center gap-3">
                   <img
-                    src={COCCINELLA_LOGO_URL}
+                    src={DIFF_LOGO_URL}
                     alt=""
-                    className="h-6 w-6 rounded-md object-contain opacity-55"
+                    className="h-6 w-6 rounded-md object-contain"
                   />
                   <div className="space-y-1">
                     <h2 className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/38">

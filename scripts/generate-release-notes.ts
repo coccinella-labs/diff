@@ -8,15 +8,15 @@ const semverPattern =
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
 
 if (!version) {
-  throw new Error("Missing release tag. Usage: generate-release-notes.ts v0.7.4 /path/to/release-notes.md");
+  throw new Error("Missing release tag. Usage: generate-release-notes.ts v0.7.5 /path/to/release-notes.md");
 }
 
 if (!outputPath) {
-  throw new Error("Missing output path. Usage: generate-release-notes.ts v0.7.4 /path/to/release-notes.md");
+  throw new Error("Missing output path. Usage: generate-release-notes.ts v0.7.5 /path/to/release-notes.md");
 }
 
 if (!tag.startsWith("v") || !semverPattern.test(version)) {
-  throw new Error(`Release tag must be v-prefixed SemVer, for example v0.7.4. Received: ${tag}`);
+  throw new Error(`Release tag must be v-prefixed SemVer, for example v0.7.5. Received: ${tag}`);
 }
 
 const releasedUpdates = APP_UPDATES.filter((update) => update.category !== "planned");
