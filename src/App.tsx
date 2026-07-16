@@ -1063,6 +1063,9 @@ export default function App() {
   const [repoPullBody, setRepoPullBody] = useState("");
   const [repoPullUrl, setRepoPullUrl] = useState<string | null>(null);
   const [aiDraftSummary, setAiDraftSummary] = useState<string | null>(null);
+  const [prExplanation, setPrExplanation] = useState<string | null>(null);
+  const [explainingPr, setExplainingPr] = useState(false);
+  const [explainPrError, setExplainPrError] = useState<string | null>(null);
   const [creatingRepoBranch, setCreatingRepoBranch] = useState(false);
   const [creatingRepoPull, setCreatingRepoPull] = useState(false);
   const [committingRepoFile, setCommittingRepoFile] = useState(false);
@@ -2015,6 +2018,44 @@ export default function App() {
     if (activeAiDraftId === draftId) {
       setActiveAiDraftId(null);
       setAiDraftSummary(null);
+    }
+  };
+
+  const explainPrWithAlma = async () => {
+    const diff = files
+      .filter((file) => file.patch)
+      .map((file) => `diff --git a/${file.filename} b/${file.filename}\n${file.patch}`)
+      .join("\n\n");
+
+    if (!diff) {
+      setExplainPrError("No diff is available to explain.");
+      return;
+    }
+
+    setExplainingPr(true);
+    setExplainPrError(null);
+    setPrExplanation(null);
+
+    try {
+      const response = await fetch("/api/ai/explain-pr", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ diff, question: "Explain this pull request." }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data.error || `Alma review failed with ${response.status}`);
+      }
+      if (typeof data.review !== "string" || !data.review) {
+        throw new Error("Alma returned an empty review.");
+      }
+      setPrExplanation(data.review);
+    } catch (error) {
+      setExplainPrError(
+        error instanceof Error ? error.message : "Failed to explain this pull request.",
+      );
+    } finally {
+      setExplainingPr(false);
     }
   };
 
@@ -6329,6 +6370,14 @@ export default function App() {
                               {selectedFile?.filename || "No file selected"}
                             </div>
                             <button
+                              onClick={explainPrWithAlma}
+                              disabled={explainingPr || files.length === 0}
+                              className="group flex items-center gap-2 text-[9px] uppercase tracking-widest text-white/20 transition-colors hover:text-white/55 disabled:opacity-30 disabled:hover:text-white/20"
+                            >
+                              {explainingPr ? "Reviewing…" : "Explain PR"}
+                              <Sparkles className="h-3 w-3 transition-transform duration-300 ease-out group-hover:-translate-y-px group-hover:scale-[1.04]" />
+                            </button>
+                            <button
                               onClick={() => setIsFullscreen(!isFullscreen)}
                               className="group flex items-center gap-2 text-[9px] uppercase tracking-widest text-white/20 transition-colors hover:text-white/55"
                             >
@@ -6344,6 +6393,39 @@ export default function App() {
                             </button>
                           </div>
                         </div>
+
+                        {(explainingPr || prExplanation || explainPrError) && (
+                          <div className="rounded-xl border border-brand-orange/20 bg-brand-orange/[0.03] p-5 space-y-3">
+                            <div className="flex items-center justify-between border-b border-white/5 pb-2">
+                              <div className="flex items-center gap-2 text-brand-orange/70">
+                                <Sparkles className="h-3 w-3" />
+                                <h3 className="text-[9px] font-bold uppercase tracking-[0.4em]">
+                                  Alma Review
+                                </h3>
+                              </div>
+                              <button
+                                onClick={() => {
+                                  setPrExplanation(null);
+                                  setExplainPrError(null);
+                                }}
+                                className="text-[9px] uppercase tracking-widest text-white/20 transition-colors hover:text-white/55"
+                              >
+                                Dismiss
+                              </button>
+                            </div>
+                            {explainingPr ? (
+                              <p className="text-[11px] text-white/40 italic">
+                                Alma is reviewing this pull request…
+                              </p>
+                            ) : explainPrError ? (
+                              <p className="text-[11px] text-rose-300/80">{explainPrError}</p>
+                            ) : (
+                              <pre className="whitespace-pre-wrap font-sans text-[12px] leading-relaxed text-white/70">
+                                {prExplanation}
+                              </pre>
+                            )}
+                          </div>
+                        )}
 
                         <div className={cn("relative", isFullscreen && "max-w-7xl mx-auto")}>
                           <div className="relative overflow-hidden rounded-xl border border-white/[0.035] bg-white/[0.01]">

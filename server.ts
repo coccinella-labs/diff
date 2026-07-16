@@ -318,6 +318,46 @@ async function startServer() {
     }
   });
 
+  app.post("/api/ai/explain-pr", async (req, res) => {
+    try {
+      const almaUrl = process.env.ALMA_URL?.trim();
+      if (!almaUrl) {
+        res.status(503).json({ error: "Alma is not configured." });
+        return;
+      }
+
+      const diff = typeof req.body?.diff === "string" ? req.body.diff.trim() : "";
+      const question =
+        typeof req.body?.question === "string" ? req.body.question.trim() : "";
+
+      if (!diff) {
+        res.status(400).json({ error: "A diff is required." });
+        return;
+      }
+
+      const response = await axios.post(
+        `${almaUrl.replace(/\/$/, "")}/api/review-diff`,
+        { diff, question: question || "Explain this pull request." },
+        { headers: { "Content-Type": "application/json" } },
+      );
+
+      const review =
+        typeof response.data?.review === "string" ? response.data.review.trim() : "";
+      if (!review) {
+        res.status(502).json({ error: "Alma returned an empty review." });
+        return;
+      }
+
+      res.json({ review });
+    } catch (error: any) {
+      const status = error?.response?.status ?? 500;
+      const message =
+        error?.response?.data?.error ??
+        (error instanceof Error ? error.message : "Alma review failed.");
+      res.status(status).json({ error: message });
+    }
+  });
+
   app.post("/api/ai/review-fix", async (req, res) => {
     try {
       const { githubProviderToken } = await getAuthenticatedGitHubContext(req);
