@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Coccinella-Labs/diff/main/.github/assets/thumbnail.png" alt="diff" width="100%">
+</p>
+
 <!-- SPDX-License-Identifier: LicenseRef-DIFF -->
 
 <p>
