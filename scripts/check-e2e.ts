@@ -80,7 +80,7 @@ type SessionSnapshot = SessionSeed & {
 };
 
 const BASE_URL = process.env.DIFF_BASE_URL || "http://localhost:3000";
-const PRIMARY_REPO_OWNER = process.env.GITHUB_REPO_OWNER || "harpertoken";
+const PRIMARY_REPO_OWNER = process.env.GITHUB_REPO_OWNER || "coccinella-labs";
 const PRIMARY_REPO_NAME = process.env.GITHUB_REPO_NAME || "harper";
 const ALT_REPO_OWNER = process.env.DIFF_E2E_ALT_REPO_OWNER || "bniladridas";
 const ALT_REPO_NAME = process.env.DIFF_E2E_ALT_REPO_NAME || "diff";

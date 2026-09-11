@@ -398,7 +398,7 @@ declare global {
   }
 }
 
-const SYSTEM_OWNER = "harpertoken";
+const SYSTEM_OWNER = "coccinella-labs";
 const SYSTEM_REPO = "harper";
 const LOCAL_STORAGE_DEFAULT_REPO_KEY = "diff_default_repo";
 const LOCAL_STORAGE_THEME_KEY = "diff_theme";

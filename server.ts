@@ -29,7 +29,7 @@ async function startServer() {
   }>();
 
   // GitHub API integration
-  const REPO_OWNER = process.env.GITHUB_REPO_OWNER || "harpertoken";
+  const REPO_OWNER = process.env.GITHUB_REPO_OWNER || "coccinella-labs";
   const REPO_NAME = process.env.GITHUB_REPO_NAME || "harper";
   const SUPABASE_URL = process.env.VITE_SUPABASE_URL?.trim();
   const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY?.trim();

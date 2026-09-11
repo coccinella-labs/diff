@@ -56,7 +56,7 @@ interface CheckRunDetails {
 
 const BASE_URL = process.env.DIFF_BASE_URL || "http://localhost:3000";
 const LIVE_URL = BASE_URL.replace(/^http/, "ws").replace(/\/$/, "") + "/api/live";
-const DEFAULT_OWNER = process.env.GITHUB_REPO_OWNER || "harpertoken";
+const DEFAULT_OWNER = process.env.GITHUB_REPO_OWNER || "coccinella-labs";
 const DEFAULT_REPO = process.env.GITHUB_REPO_NAME || "harper";
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY;
