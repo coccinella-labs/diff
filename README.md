@@ -6,9 +6,9 @@
 
 <p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bniladridas/diff/main/assets/diff-sign-light.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/bniladridas/diff/main/assets/diff-sign.png">
-    <img src="https://raw.githubusercontent.com/bniladridas/diff/main/assets/diff-sign.png" alt="DIFF logo" width="36" height="36">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/coccinella-labs/diff/main/assets/diff-sign-light.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/coccinella-labs/diff/main/assets/diff-sign.png">
+    <img src="https://raw.githubusercontent.com/coccinella-labs/diff/main/assets/diff-sign.png" alt="DIFF logo" width="36" height="36">
   </picture>
 </p>
 

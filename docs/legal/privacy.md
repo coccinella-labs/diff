@@ -35,5 +35,5 @@ Browser-local data can be cleared from your browser storage. Synced preferences 
 
 For project questions, use the repository issue tracker or Coccinella Labs project space:
 
-- https://github.com/bniladridas/diff
+- https://github.com/coccinella-labs/diff
 - https://github.com/Coccinella-Labs/coccinella

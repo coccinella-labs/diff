@@ -4863,7 +4863,7 @@ export default function App() {
                           <div className="pt-2">
                             <div className="mb-2 grid grid-cols-2 gap-1">
                               <a
-                                href="https://github.com/bniladridas/diff/blob/main/docs/legal/privacy.md"
+                                href="https://github.com/coccinella-labs/diff/blob/main/docs/legal/privacy.md"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="rounded-lg px-2 py-1.5 text-[9px] font-medium uppercase tracking-[0.18em] text-white/25 transition-colors hover:bg-white/[0.03] hover:text-white/55"
@@ -4871,7 +4871,7 @@ export default function App() {
                                 Privacy
                               </a>
                               <a
-                                href="https://github.com/bniladridas/diff/blob/main/docs/legal/terms.md"
+                                href="https://github.com/coccinella-labs/diff/blob/main/docs/legal/terms.md"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="rounded-lg px-2 py-1.5 text-[9px] font-medium uppercase tracking-[0.18em] text-white/25 transition-colors hover:bg-white/[0.03] hover:text-white/55"
@@ -4942,7 +4942,7 @@ export default function App() {
             <div className="hidden lg:flex items-center text-[9px] font-medium uppercase tracking-[0.22em] text-white/22">
               <Tooltip content="Open GitHub repo">
               <a
-                href="https://github.com/bniladridas/diff"
+                href="https://github.com/coccinella-labs/diff"
                 target="_blank"
                 rel="noreferrer"
                 className="group flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.04] bg-white/[0.012] transition-colors hover:border-white/[0.08] hover:bg-white/[0.025] hover:text-white/42"
@@ -7548,7 +7548,7 @@ export default function App() {
 
                 <div className="flex flex-wrap gap-4 pt-0.5 text-[9px] font-medium uppercase tracking-[0.16em]">
                   <a
-                    href="https://github.com/bniladridas/diff/blob/main/docs/legal/privacy.md"
+                    href="https://github.com/coccinella-labs/diff/blob/main/docs/legal/privacy.md"
                     target="_blank"
                     rel="noreferrer"
                     className="text-white/28 transition-colors hover:text-white/60"
@@ -7556,7 +7556,7 @@ export default function App() {
                     Privacy Policy
                   </a>
                   <a
-                    href="https://github.com/bniladridas/diff/blob/main/docs/legal/terms.md"
+                    href="https://github.com/coccinella-labs/diff/blob/main/docs/legal/terms.md"
                     target="_blank"
                     rel="noreferrer"
                     className="text-white/28 transition-colors hover:text-white/60"

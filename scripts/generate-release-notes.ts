@@ -30,8 +30,8 @@ if (!update) {
 const previous = releasedUpdates[updateIndex + 1];
 const fullChangelogLabel = previous ? `v${previous.version}...v${version}` : `v${version}`;
 const fullChangelog = previous
-  ? `https://github.com/bniladridas/diff/compare/v${previous.version}...v${version}`
-  : `https://github.com/bniladridas/diff/commits/v${version}`;
+  ? `https://github.com/coccinella-labs/diff/compare/v${previous.version}...v${version}`
+  : `https://github.com/coccinella-labs/diff/commits/v${version}`;
 
 const lines = [
   `## ${update.title}`,
